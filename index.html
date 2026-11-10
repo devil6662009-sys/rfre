@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Рационал сандарға арифметикалық амалдар қолдану — 6-сынып</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;800&family=Noto+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2f8fd;--grid:#d5e6f4;--surface:#ffffff;--text:#12305b;--muted:#4d6585;
+  --accent:#d64550;--mark:#ffe27a;--ok:#1a7f4b;--bad:#c23a3a;--line:#bcd3e8;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1a2c;--grid:#1a2b45;--surface:#142339;--text:#e6eef8;--muted:#9db3d0;
+    --accent:#ff7b84;--mark:#6b5a10;--ok:#5fd199;--bad:#ff8a8a;--line:#2b4064;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1a2c;--grid:#1a2b45;--surface:#142339;--text:#e6eef8;--muted:#9db3d0;
+  --accent:#ff7b84;--mark:#6b5a10;--ok:#5fd199;--bad:#ff8a8a;--line:#2b4064;color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background-color:var(--bg);color:var(--text);font:400 17px/1.65 "Noto Sans",system-ui,sans-serif;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px}
+main{max-width:760px;margin:0 auto;padding:40px 20px 56px 28px;border-left:3px solid var(--accent);background:color-mix(in srgb,var(--bg) 82%,transparent)}
+h1{font-size:clamp(28px,6vw,42px);line-height:1.15;font-weight:800;margin:0 0 12px}
+h2{font-size:24px;font-weight:800;margin:44px 0 10px}
+p{margin:10px 0;max-width:68ch}
+.sub{color:var(--muted);font-size:18px}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+nav a{color:var(--text);text-decoration:none;border:1.5px solid var(--line);background:var(--surface);padding:5px 12px;border-radius:999px;font-size:15px}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);outline:none}
+.rule{background:var(--surface);border:1.5px solid var(--line);border-left:6px solid var(--accent);border-radius:6px;padding:12px 16px;margin:14px 0}
+.rule b{background:linear-gradient(transparent 55%,var(--mark) 55%)}
+.ex{font-family:"Noto Serif",Georgia,serif;font-size:19px;background:var(--surface);border:1.5px dashed var(--line);border-radius:6px;padding:10px 16px;margin:10px 0;overflow-x:auto;white-space:nowrap}
+.ex small{display:block;font:400 14px "Noto Sans",sans-serif;color:var(--muted);white-space:normal}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.88em;line-height:1.15;margin:0 .15em}
+.fr span:first-child{border-bottom:1.5px solid currentColor;padding:0 .2em}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;background:var(--surface);margin:12px 0}
+th,td{border:1.5px solid var(--line);padding:8px 18px;text-align:center;font-family:"Noto Serif",serif;font-size:19px}
+td.p{color:var(--ok);font-weight:600}td.m{color:var(--bad);font-weight:600}
+.warn{color:var(--bad);font-weight:600}
+.q{background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:16px;margin:14px 0}
+.q p{font-family:"Noto Serif",serif;font-size:20px;margin:0 0 10px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.opts button{font:inherit;font-family:"Noto Serif",serif;font-size:19px;color:var(--text);background:var(--bg);border:1.5px solid var(--line);border-radius:6px;padding:8px;cursor:pointer}
+.opts button:hover:not(:disabled),.opts button:focus-visible{border-color:var(--accent);outline:none}
+.opts button.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--surface))}
+.opts button.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 18%,var(--surface))}
+.fb{margin-top:10px;font-size:15px;min-height:1.4em}
+#res{font-weight:800;font-size:20px}
+.btn{font:600 16px "Noto Sans",sans-serif;color:#fff;background:var(--accent);border:0;border-radius:6px;padding:10px 18px;cursor:pointer}
+@media (max-width:520px){body{font-size:16px}main{padding-left:18px;padding-right:14px}}
+</style>
+</head>
+<body>
+<main>
+<h1>Рационал сандарға арифметикалық амалдар қолдану</h1>
+<p class="sub">6-сынып, математика. Қосу, азайту, көбейту және бөлу ережелерін мысалдармен қайталаймыз.</p>
+<nav>
+<a href="#sandar">Рационал сандар</a><a href="#qosu">Қосу</a><a href="#azaytu">Азайту</a>
+<a href="#kobeytu">Көбейту</a><a href="#bolu">Бөлу</a><a href="#ret">Амалдар реті</a><a href="#test">Тест</a>
+</nav>
+
+<h2 id="sandar">Рационал сандар деген не?</h2>
+<p>Бүтін сандар мен бөлшек сандардың жиыны рационал сандар деп аталады. Рационал санды m/n түрінде жазуға болады: m — бүтін сан, n — натурал сан.</p>
+<div class="ex">−5; 0; {3/4}; −1,25; −{2/7}</div>
+<div class="rule"><b>Қарама-қарсы сандар</b> тек таңбасымен ерекшеленеді, қосындысы нөлге тең: {3/4} және −{3/4}.</div>
+<div class="rule"><b>Санның модулі</b> — оның координаталық түзудегі нөлден қашықтығы: |−{3/4}| = {3/4}.</div>
+
+<h2 id="qosu">Қосу</h2>
+<div class="rule"><b>Таңбалары бірдей</b> сандарды қосқанда модульдерін қосып, алдына ортақ таңбаны жазамыз.</div>
+<div class="ex">−{2/7} + (−{3/7}) = −{5/7}</div>
+<div class="rule"><b>Таңбалары әртүрлі</b> сандарды қосқанда үлкен модульден кіші модульді азайтып, модулі үлкен санның таңбасын қоямыз.</div>
+<div class="ex">−{3/4} + {1/2} = −{3/4} + {2/4} = −{1/4}<small>Алдымен бөлшектерді ортақ бөлімге келтірдік.</small></div>
+<div class="ex">−1,5 + 4,2 = 4,2 − 1,5 = 2,7</div>
+
+<h2 id="azaytu">Азайту</h2>
+<div class="rule"><b>Азайтқышқа қарама-қарсы санды қосамыз:</b> a − b = a + (−b).</div>
+<div class="ex">{2/3} − {5/6} = {2/3} + (−{5/6}) = {4/6} − {5/6} = −{1/6}</div>
+<div class="ex">5 − (−2) = 5 + 2 = 7</div>
+
+<h2 id="kobeytu">Көбейту</h2>
+<div class="rule"><b>Таңба ережесі:</b> таңбалары бірдей болса, көбейтінді оң; әртүрлі болса, теріс.</div>
+<div class="wrap"><table>
+<tr><th>×</th><th>+</th><th>−</th></tr>
+<tr><th>+</th><td class="p">+</td><td class="m">−</td></tr>
+<tr><th>−</th><td class="m">−</td><td class="p">+</td></tr>
+</table></div>
+<p>Бөлшектерді көбейткенде алымын алымына, бөлімін бөліміне көбейтеміз. Мүмкін болса, қысқартамыз.</p>
+<div class="ex">−{2/5} · {3/4} = −{6/20} = −{3/10}</div>
+<div class="ex">(−4) · (−5) = 20</div>
+
+<h2 id="bolu">Бөлу</h2>
+<div class="rule"><b>Бөлінгішті бөлгіштің кері санына көбейтеміз:</b> a : b = a · {1/b}. Таңба ережесі көбейтумен бірдей.</div>
+<div class="ex">−{3/8} : (−{9/16}) = −{3/8} · (−{16/9}) = {48/72} = {2/3}</div>
+<div class="ex">−6 : {3/2} = −6 · {2/3} = −4</div>
+<p class="warn">Нөлге бөлуге болмайды!</p>
+
+<h2 id="ret">Амалдар реті</h2>
+<div class="rule">1) жақша ішіндегі амал; 2) көбейту мен бөлу, солдан оңға қарай; 3) қосу мен азайту, солдан оңға қарай.</div>
+<div class="ex">−8 : 4 + 3 · (−2) = −2 + (−6) = −8</div>
+
+<h2 id="test">Өзіңді тексер</h2>
+<div id="quiz"></div>
+<p id="res"></p>
+<button class="btn" id="again" hidden>Қайта бастау</button>
+</main>
+<script>
+function F(s){return s.replace(/\{(\d+)\/(\d+)\}/g,'<span class="fr"><span>$1</span><span>$2</span></span>');}
+document.querySelector('main').innerHTML=F(document.querySelector('main').innerHTML);
+var Q=[
+ {q:"−7 + 3 = ?",o:["−4","4","−10","10"],a:0,e:"Таңбалары әртүрлі: 7 − 3 = 4, модулі үлкен сан теріс, жауабы −4."},
+ {q:"5 − (−2) = ?",o:["3","7","−3","−7"],a:1,e:"Азайтқышқа қарама-қарсы санды қосамыз: 5 + 2 = 7."},
+ {q:"(−4) · (−5) = ?",o:["−20","−9","9","20"],a:3,e:"Таңбалары бірдей, сондықтан көбейтінді оң: 20."},
+ {q:"−{1/2} + {1/4} = ?",o:["−{3/4}","−{1/4}","{1/4}","{3/4}"],a:1,e:"−{2/4} + {1/4} = −{1/4}."},
+ {q:"−6 : {3/2} = ?",o:["9","−9","4","−4"],a:3,e:"−6 · {2/3} = −4."}
+],score=0,done=0,box=document.getElementById('quiz'),res=document.getElementById('res'),again=document.getElementById('again');
+function build(){
+ score=0;done=0;box.innerHTML='';res.textContent='';again.hidden=true;
+ Q.forEach(function(it,i){
+  var d=document.createElement('div');d.className='q';
+  d.innerHTML='<p>'+(i+1)+'. '+F(it.q)+'</p><div class="opts"></div><div class="fb" aria-live="polite"></div>';
+  var w=d.querySelector('.opts'),fb=d.querySelector('.fb');
+  it.o.forEach(function(t,j){
+   var b=document.createElement('button');b.type='button';b.innerHTML=F(t);
+   b.onclick=function(){
+    var bs=w.querySelectorAll('button');
+    bs.forEach(function(x){x.disabled=true});
+    bs[it.a].classList.add('ok');
+    if(j===it.a){score++;fb.textContent='Дұрыс! ';}else{b.classList.add('bad');fb.textContent='Қате. ';}
+    fb.innerHTML+=F(it.e);done++;
+    if(done===Q.length){res.textContent='Нәтиже: '+score+' / '+Q.length;again.hidden=false;}
+   };
+   w.appendChild(b);
+  });
+  box.appendChild(d);
+ });
+}
+again.onclick=function(){build();document.getElementById('test').scrollIntoView();};
+build();
+</script>
+</body>
+</html>
